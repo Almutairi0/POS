@@ -12,13 +12,13 @@ public class HomeDashboard extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Restaurant Management System - Dashboard");
 
-        // أزرار الشاشات
+        
         Button bookTableBtn = new Button("Book Table");
         Button menuBtn = new Button("Menu");
         Button ordersBtn = new Button("Orders");
         Button inventoryBtn = new Button("Inventory");
 
-        // ربط الزر بشاشة الحجز
+        
         bookTableBtn.setOnAction(e -> {
             BookingScreen bookingScreen = new BookingScreen();
             try {
@@ -28,7 +28,6 @@ public class HomeDashboard extends Application {
             }
         });
 
-        // ربط الزر بشاشة القائمة
        /* menuBtn.setOnAction(e -> {
             MenuScreen menuScreen = new MenuScreen();
             try {
@@ -38,7 +37,6 @@ public class HomeDashboard extends Application {
             }
         });
 
-        // ربط الزر بشاشة الطلبات
         ordersBtn.setOnAction(e -> {
             OrderSummary orderSummary = new OrderSummary();
             try {
@@ -48,7 +46,6 @@ public class HomeDashboard extends Application {
             }
         });
 
-        // ربط الزر بشاشة المخزون
         inventoryBtn.setOnAction(e -> {
             InventoryScreen inventoryScreen = new InventoryScreen();
             try {
@@ -58,8 +55,7 @@ public class HomeDashboard extends Application {
             }
         });*/
 
-        // تنظيم الأزرار في VBox
-        VBox layout = new VBox(10); // 10px مسافة بين الأزرار
+       VBox layout = new VBox(10);
         layout.getChildren().addAll(bookTableBtn, menuBtn, ordersBtn, inventoryBtn);
 
         Scene scene = new Scene(layout, 400, 300);
@@ -67,7 +63,6 @@ public class HomeDashboard extends Application {
         primaryStage.show();
     }
 
-    // لتشغيل هذا الكلاس مباشرة
     public static void main(String[] args) {
         launch(args);
     }
