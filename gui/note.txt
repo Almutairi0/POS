@@ -1,12 +1,92 @@
-MenuScreen.java:12: error: method does not override or implement a method from a supertype
-    @Override
-    ^
-MenuScreen.java:37: error: cannot find symbol
-      launch(args);
-      ^
-  symbol:   method launch(String[])
-  location: class MenuScreen
-2 errors
+package gui;
 
-package gui; import javafx.application.*; import javafx.stage.*; import javafx.scene.*; import javafx.scene.control.*; import javafx.scene.layout.*; import javafx.geometry.*; public class MenuScreen   { @Override public void start(Stage primaryStage) { primaryStage.setTitle("Menu"); HBox hbox = new HBox(10); hbox.setPadding(new Insets(20)); Button tea = new Button("tea"); tea.setPrefWidth(120); tea.setPrefHeight(50); Button coffee = new Button("coffee"); coffee.setPrefWidth(120); coffee.setPrefHeight(50); Button knafah = new Button("knafah"); knafah.setPrefWidth(120); knafah.setPrefHeight(50); Button bsbosh = new Button("bsbosh"); bsbosh.setPrefWidth(120); bsbosh.setPrefHeight(50); hbox.getChildren().addAll(tea, coffee, knafah, bsbosh); Scene scene = new Scene (hbox, 400, 300); primaryStage.setScene(scene); primaryStage.show(); } public static void main(String[] args) { launch(args); } }
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckoutScreen {
+
+    private final ObservableList<String> cartItems = FXCollections.observableArrayList();
+    private final Map<String, Integer> itemCounts = new HashMap<>();
+    private final DoubleProperty total = new SimpleDoubleProperty(0.0);
+
+    public void show() {
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Checkout");
+
+        VBox root = new VBox(10);
+        root.setPadding(new Insets(20));
+
+        Label title = new Label("Menu");
+        title.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
+
+        HBox buttonBox = new HBox(10);
+        Button teaButton = new Button("Tea");
+        Button coffeeButton = new Button("Coffee");
+        Button knafahButton = new Button("Knafah");
+
+        teaButton.setPrefWidth(100);
+        coffeeButton.setPrefWidth(100);
+        knafahButton.setPrefWidth(100);
+
+        buttonBox.getChildren().addAll(teaButton, coffeeButton, knafahButton);
+
+        ListView<String> cartListView = new ListView<>(cartItems);
+        cartListView.setPrefHeight(200);
+
+        Label totalLabel = new Label("Total: $0.00");
+        totalLabel.setStyle("-fx-font-size: 16px;");
+
+        total.addListener((obs, oldVal, newVal) ->
+                totalLabel.setText(String.format("Total: $%.2f", newVal.doubleValue()))
+        );
+
+        Button checkoutButton = new Button("Checkout");
+        checkoutButton.setPrefWidth(120);
+        checkoutButton.setOnAction(e -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Order Complete");
+            alert.setHeaderText(null);
+            alert.setContentText("Thank you for your purchase!\nYour total was $" +
+                    String.format("%.2f", total.get()));
+            alert.showAndWait();
+
+            // Reset cart
+            cartItems.clear();
+            itemCounts.clear();
+            total.set(0);
+        });
+
+        teaButton.setOnAction(e -> addItem("Tea", 3.0));
+        coffeeButton.setOnAction(e -> addItem("Coffee", 5.0));
+        knafahButton.setOnAction(e -> addItem("Knafah", 7.0));
+
+        root.getChildren().addAll(title, buttonBox, new Label("Cart:"), cartListView, totalLabel, checkoutButton);
+
+        Scene scene = new Scene(root, 400, 400);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    private void addItem(String itemName, double price) {
+        itemCounts.put(itemName, itemCounts.getOrDefault(itemName, 0) + 1);
+        updateCartDisplay();
+        total.set(total.get() + price);
+    }
+
+    private void updateCartDisplay() {
+        cartItems.clear();
+        for (Map.Entry<String, Integer> entry : itemCounts.entrySet()) {
+            cartItems.add(entry.getKey() + " x" + entry.getValue());
+        }
+    }
+}

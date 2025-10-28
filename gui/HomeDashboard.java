@@ -15,7 +15,7 @@ public class HomeDashboard extends Application {
         
         Button bookTableBtn = new Button("Book Table");
         Button menuBtn = new Button("Menu");
-        Button ordersBtn = new Button("Orders");
+        //Button ordersBtn = new Button("Orders");
         Button inventoryBtn = new Button("Inventory");
 
         
@@ -44,19 +44,19 @@ public class HomeDashboard extends Application {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        });
+        });*/
 
         inventoryBtn.setOnAction(e -> {
             InventoryScreen inventoryScreen = new InventoryScreen();
             try {
-                inventoryScreen.start(new Stage());
+                inventoryScreen.show();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        });*/
+        });
 
        VBox layout = new VBox(10);
-        layout.getChildren().addAll(bookTableBtn, menuBtn, ordersBtn, inventoryBtn);
+        layout.getChildren().addAll(bookTableBtn, menuBtn, inventoryBtn);
 
         Scene scene = new Scene(layout, 400, 300);
         primaryStage.setScene(scene);
