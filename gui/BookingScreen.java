@@ -7,11 +7,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class BookingScreen extends Application {
+public class BookingScreen {
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Book a Table");
+    
+    public void show() {
+        Stage stage = new Stage();
+        stage.setTitle("Book a Table");
 
         // Grid layout
         GridPane grid = new GridPane();
@@ -63,11 +64,7 @@ public class BookingScreen extends Application {
 
         // Scene
         Scene scene = new Scene(grid, 400, 250);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        stage.setScene(scene);
+        stage.show();
     }
 }

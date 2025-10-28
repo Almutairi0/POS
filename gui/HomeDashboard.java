@@ -22,7 +22,7 @@ public class HomeDashboard extends Application {
         bookTableBtn.setOnAction(e -> {
             BookingScreen bookingScreen = new BookingScreen();
             try {
-                bookingScreen.start(new Stage());
+                bookingScreen.show();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
