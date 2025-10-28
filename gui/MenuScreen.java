@@ -1,12 +1,40 @@
 package gui;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.application.*;
+import javafx.stage.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.geometry.*;
 
-public class HomeDashboard extends Application {
+public class MenuScreen extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+    primaryStage.setTitle("Menu");
+
+    HBox hbox = new HBox(10);
+    hbox.setPadding(new Insets(20));
+    Button tea = new Button("tea");
+    tea.setPrefWidth(120);  
+    tea.setPrefHeight(50);
+    Button coffee = new Button("coffee");
+    coffee.setPrefWidth(120);  
+    coffee.setPrefHeight(50);
+    Button knafah = new Button("knafah");
+    knafah.setPrefWidth(120);  
+    knafah.setPrefHeight(50);
+    Button bsbosh = new Button("bsbosh");
+    bsbosh.setPrefWidth(120);
+    bsbosh.setPrefHeight(50);
+
+    hbox.getChildren().addAll(tea, coffee, knafah, bsbosh);
+    Scene scene = new Scene (hbox, 400, 300);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+    }
+    public static void main(String[] args) {
+      launch(args);
+    }
+}
+
