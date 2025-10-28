@@ -28,15 +28,15 @@ public class HomeDashboard extends Application {
             }
         });
 
-       /* menuBtn.setOnAction(e -> {
+        menuBtn.setOnAction(e -> {
             MenuScreen menuScreen = new MenuScreen();
             try {
-                menuScreen.start(new Stage());
+                menuScreen.show();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
-
+/*
         ordersBtn.setOnAction(e -> {
             OrderSummary orderSummary = new OrderSummary();
             try {

@@ -7,11 +7,12 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.geometry.*;
 
-public class MenuScreen extends Application {
+public class MenuScreen {
 
-    @Override
-    public void start(Stage primaryStage) {
-    primaryStage.setTitle("Menu");
+    
+    public void show() {
+    Stage stage = new Stage();
+    stage.setTitle("Menu");
 
     HBox hbox = new HBox(10);
     hbox.setPadding(new Insets(20));
@@ -30,11 +31,8 @@ public class MenuScreen extends Application {
 
     hbox.getChildren().addAll(tea, coffee, knafah, bsbosh);
     Scene scene = new Scene (hbox, 400, 300);
-    primaryStage.setScene(scene);
-    primaryStage.show();
-    }
-    public static void main(String[] args) {
-      launch(args);
+    stage.setScene(scene);
+    stage.show();
     }
 }
 
