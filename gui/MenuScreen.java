@@ -59,7 +59,7 @@ public class MenuScreen {
 
         layout.getChildren().addAll(menuLabel, tea, coffee, knafah, bsbosh, new Label("Your Cart:"), cartList, checkoutBtn);
 
-        Scene scene = new Scene(layout, 400, 500);
+        Scene scene = new Scene(layout, 1920, 1080);
         stage.setScene(scene);
         stage.show();
     }

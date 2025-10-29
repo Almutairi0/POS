@@ -58,7 +58,7 @@ public class HomeDashboard extends Application {
        VBox layout = new VBox(10);
         layout.getChildren().addAll(bookTableBtn, menuBtn, inventoryBtn);
 
-        Scene scene = new Scene(layout, 400, 300);
+        Scene scene = new Scene(layout, 500, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

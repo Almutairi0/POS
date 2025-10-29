@@ -63,7 +63,7 @@ public class BookingScreen {
         });
 
         // Scene
-        Scene scene = new Scene(grid, 400, 250);
+        Scene scene = new Scene(grid, 500, 400);
         stage.setScene(scene);
         stage.show();
     }
