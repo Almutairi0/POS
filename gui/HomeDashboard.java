@@ -10,7 +10,7 @@ public class HomeDashboard extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Restaurant Management System - Dashboard");
+        primaryStage.setTitle("Diwanyh - Dashboard");
 
         
         Button bookTableBtn = new Button("Book Table");
