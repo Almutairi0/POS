@@ -45,6 +45,7 @@ public class ReceiptScreen {
         layout.getChildren().addAll(header, date, itemsView, totalLabel, closeBtn);
 
         Scene scene = new Scene(layout, 1920, 1080);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

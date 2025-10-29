@@ -64,6 +64,7 @@ public class BookingScreen {
 
         // Scene
         Scene scene = new Scene(grid, 500, 400);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

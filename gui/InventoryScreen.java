@@ -46,6 +46,7 @@ public class InventoryScreen {
         layout.getChildren().addAll(label, list, newItem, addBtn, removeBtn);
 
         Scene scene = new Scene(layout, 1920, 1080);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

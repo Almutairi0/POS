@@ -57,6 +57,7 @@ public class CheckoutScreen {
         layout.getChildren().addAll(title, cartListView, totalLabel, payBtn);
 
         Scene scene = new Scene(layout, 1920, 1080);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
