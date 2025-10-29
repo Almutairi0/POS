@@ -24,6 +24,8 @@ public class MenuScreen {
 
         // Menu buttons
         Button tea = new Button("Tea");
+        tea.setPrefWidth(120);
+        tea.setPrefHeight(50);
         Button coffee = new Button("Coffee");
         Button knafah = new Button("Knafah");
         Button bsbosh = new Button("Bsbosh");
