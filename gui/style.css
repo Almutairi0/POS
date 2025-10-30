@@ -1,84 +1,96 @@
 /* =========================
-Diwanyh POS - Style Sheet
+Green & White POS Theme
 ========================= */
 
-/* ---- Base Styles ---- */
+/* ---- Base Window ---- */
 .root {
-    -fx-font-family: "Poppins", "Segoe UI", sans-serif;
-    -fx-background-color: linear-gradient(to bottom right, #f7f8fa, #e8ecf1);
+-fx-font-family: "Poppins", "Segoe UI", sans-serif;
+-fx-background-color: linear-gradient(to bottom right, #f9f9f9, #eef3ee);
 }
 
-/* ---- Headings ---- */
+/* ---- Title & Labels ---- */
 .label {
-    -fx-font-size: 14px;
-    -fx-text-fill: #222;
+-fx-font-size: 14px;
+-fx-text-fill: #222;
 }
 
 .title {
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2E8B57;
+-fx-font-size: 22px;
+-fx-font-weight: bold;
+-fx-text-fill: #157a35;
 }
 
 /* ---- Buttons ---- */
 .button {
-    -fx-background-color: #2E8B57;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
-    -fx-background-radius: 8;
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.3, 0, 2);
-    -fx-transition: all 0.3s ease;
+-fx-background-color: #1abc9c;
+-fx-text-fill: white;
+-fx-font-weight: 600;
+-fx-padding: 10 20 10 20;
+-fx-background-radius: 12;
+-fx-cursor: hand;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 6, 0, 0, 1);
 }
 
 .button:hover {
-    -fx-background-color: #3CB371;
-    -fx-scale-x: 1.05;
-    -fx-scale-y: 1.05;
+-fx-background-color: #16a085;
 }
 
 .button:pressed {
-    -fx-background-color: #256b45;
+-fx-background-color: #0e7c63;
 }
 
-/* ---- Containers ---- */
-.vbox, .grid-pane {
-    -fx-padding: 20;
-    -fx-alignment: center;
-    -fx-spacing: 12;
+/* ---- Text Fields ---- */
+.text-field {
+-fx-background-color: white;
+-fx-border-color: #b7d7c2;
+-fx-border-radius: 8;
+-fx-background-radius: 8;
+-fx-padding: 6 10 6 10;
 }
 
-/* ---- Inputs ---- */
-.text-field, .combo-box, .spinner {
-    -fx-background-radius: 6;
-    -fx-border-radius: 6;
-    -fx-border-color: #ccc;
-    -fx-border-width: 1;
-    -fx-padding: 5;
+.text-field:focused {
+-fx-border-color: #1abc9c;
+-fx-effect: dropshadow(gaussian, rgba(26,188,156,0.25), 5, 0, 0, 1);
 }
 
-.text-field:focused, .combo-box:focused, .spinner:focused {
-    -fx-border-color: #2E8B57;
-    -fx-effect: dropshadow(gaussian, rgba(46,139,87,0.4), 5, 0.3, 0, 0);
+/* ---- Table View ---- */
+.table-view {
+-fx-background-color: white;
+-fx-border-color: #cfe8d8;
+-fx-border-radius: 10;
+-fx-background-radius: 10;
+-fx-padding: 5;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
 }
 
-/* ---- Message Label ---- */
-.message-success {
-    -fx-text-fill: #2E8B57;
-    -fx-font-weight: bold;
+.table-view .column-header {
+-fx-background-color: #1abc9c;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-alignment: CENTER;
 }
 
-.message-error {
-    -fx-text-fill: #D8000C;
-    -fx-font-weight: bold;
+.table-row-cell:selected {
+-fx-background-color: #e9fdf5;
 }
 
-/* ---- Stage ---- */
-.stage {
-    -fx-background-color: white;
-    -fx-background-radius: 10;
-    -fx-padding: 15;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.4, 0, 4);
+/* ---- Panels / Cards ---- */
+.card {
+-fx-background-color: white;
+-fx-background-radius: 15;
+-fx-border-radius: 15;
+-fx-border-color: #dfeee5;
+-fx-padding: 15;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 8, 0, 0, 2);
 }
+
+/* ---- Scroll Bar ---- */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+-fx-background-color: transparent;
+}
+
+.thumb {
+-fx-background-color: #a3d9b4;
+-fx-background-radius: 6;
+}
+
