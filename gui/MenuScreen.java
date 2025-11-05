@@ -61,7 +61,7 @@ public class MenuScreen {
 
         layout.getChildren().addAll(menuLabel, tea, coffee, knafah, bsbosh, new Label("Your Cart:"), cartList, checkoutBtn);
 
-        Scene scene = new Scene(layout, 1920, 1080);
+        Scene scene = new Scene(layout, 500, 400);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();

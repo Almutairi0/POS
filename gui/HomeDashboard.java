@@ -62,7 +62,7 @@ public class HomeDashboard extends Application {
 
         layout.getChildren().addAll(bookTableBtn, menuBtn, inventoryBtn);
   
-        Scene scene = new Scene(layout, 300, 200);
+        Scene scene = new Scene(layout, 200, 200);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
