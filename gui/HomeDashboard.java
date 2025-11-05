@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 
 public class HomeDashboard extends Application {
 
@@ -12,7 +14,10 @@ public class HomeDashboard extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Diwanyh - Dashboard");
 
-        
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.CENTER);
+
         Button bookTableBtn = new Button("Book Table");
         Button menuBtn = new Button("Menu");
         //Button ordersBtn = new Button("Orders");
@@ -55,10 +60,9 @@ public class HomeDashboard extends Application {
             }
         });
 
-       VBox layout = new VBox(10);
         layout.getChildren().addAll(bookTableBtn, menuBtn, inventoryBtn);
-
-        Scene scene = new Scene(layout, 500, 400);
+  
+        Scene scene = new Scene(layout, 300, 200);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
