@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 
 public class HomeDashboard extends Application {
 
@@ -22,8 +23,10 @@ public class HomeDashboard extends Application {
         Button menuBtn = new Button("Menu");
         //Button ordersBtn = new Button("Orders");
         Button inventoryBtn = new Button("Inventory");
+        /*bookTableBtn.setMaxWidth(Double.MAX_VALUE);
+        menuBtn.setMaxWidth(Double.MAX_VALUE);
+        inventoryBtn.setMaxWidth(Double.MAX_VALUE);*/
 
-        
         bookTableBtn.setOnAction(e -> {
             BookingScreen bookingScreen = new BookingScreen();
             try {
@@ -61,6 +64,12 @@ public class HomeDashboard extends Application {
         });
 
         layout.getChildren().addAll(bookTableBtn, menuBtn, inventoryBtn);
+
+        for (Node node : layout.getChildren()) {
+            if (node instanceof Button button) {
+                button.setMaxWidth(Double.MAX_VALUE);
+            }
+        }
   
         Scene scene = new Scene(layout, 200, 200);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());

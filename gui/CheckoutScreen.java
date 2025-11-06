@@ -47,14 +47,17 @@ public class CheckoutScreen {
             receipt.setHeaderText("Thank you!");
             receipt.setContentText("Your total was " + finalTotal + " SAR.\nYour order will be served shortly.");
             receipt.showAndWait();
+            //stage.close();
+        });
+
+        Button receiptBtn = new Button("Receipt");
+        receiptBtn.setOnAction(e -> {
+            ReceiptScreen receiptScreen = new ReceiptScreen(cart, finalTotal);
+            receiptScreen.show();
             stage.close();
         });
 
-        ReceiptScreen receiptScreen = new ReceiptScreen(cart, total);
-        receiptScreen.show();
-
-
-        layout.getChildren().addAll(title, cartListView, totalLabel, payBtn);
+        layout.getChildren().addAll(title, cartListView, totalLabel, payBtn, receiptBtn);
 
         Scene scene = new Scene(layout, 500, 400);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
