@@ -1,11 +1,15 @@
 package gui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import java.time.LocalDataTime;
+import java.util.List;
 
 public class BookingScreen {
 
@@ -35,10 +39,12 @@ public class BookingScreen {
         // Table Selection
         Label tableLabel = new Label("Select Table ID:");
         ComboBox<Integer> tableCombo = new ComboBox<>();
-        // TODO: Populate table IDs from DB where status = 'available'
         tableCombo.getItems().addAll(1, 2, 3, 4, 5); // placeholder
         grid.add(tableLabel, 0, 2);
         grid.add(tableCombo, 1, 2);
+
+        // Load available tables from DB
+        refreshAvailableTables(tableCombo);
 
         // Book Button
         Button bookBtn = new Button("Book Table");
@@ -50,22 +56,43 @@ public class BookingScreen {
 
         // Button Action
         bookBtn.setOnAction(e -> {
-            String name = nameField.getText();
+            String name = nameField.getText().trim();
             int guests = guestsSpinner.getValue();
-            Integer tableId = tableCombo.getValue();
+            Table selectedTable = tableCombo.getValue();
 
-            if (name.isEmpty() || tableId == null) {
+            if (name.isEmpty() || selectedTable == null) {
                 messageLabel.setText("Please fill all fields and select a table.");
+                return;
+            }
+
+            Booking booking = new Booking(name, selectedTable.getId(), LocalDataTime.now());
+            boolean success = BookingDatabase.createBooking(Booking);
+            if (success) {
+              messageLabel.setText("Table" + selectedTable.getId() + "booked for " + name + "(" + guests + "guests).");
+              nameField.clear();
+              tableCombo.getItems().remove(selectedTable); // remove from available List
             } else {
-                // TODO: Add JDBC logic to insert booking and update table status
-                messageLabel.setText("Table " + tableId + " booked for " + name + " (" + guests + " guests).");
+              messageLabel.setText("Failed to create booking. Try again");
+
             }
         });
-
         // Scene
         Scene scene = new Scene(grid, 500, 400);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
+    private void refreshAvailableTables(ComboBox<Table> comboBox) {
+        List<Table> allTables = Table.loadTables();
+        ObservableList<Table> availableTables = FXCollections.observableArrayList();
+
+        for (Table table : allTables) {
+            if (table.isAvailable()) {
+                availableTables.add(table);
+            }
+        }
+
+        comboBox.setItems(availableTables);
+    }
 }
+
